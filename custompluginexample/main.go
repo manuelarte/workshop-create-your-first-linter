@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const _defaultAddress = ":8080"
+const defaultAddress = ":8080"
 
 func main() {
 	logger := slog.Default()
@@ -25,7 +25,7 @@ func run(logger *slog.Logger) error {
 
 	handler := http.NewServeMux()
 	s := &http.Server{
-		Addr:           _defaultAddress,
+		Addr:           defaultAddress,
 		Handler:        handler,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
