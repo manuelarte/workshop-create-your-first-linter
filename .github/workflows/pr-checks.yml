@@ -41,7 +41,6 @@ jobs:
         with:
           check_filenames: true
           check_hidden: true
-          exclude_file: .golangci.yml
 
   typos:
     # https://github.com/crate-ci/typos
