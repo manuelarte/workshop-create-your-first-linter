@@ -1,6 +1,8 @@
 package analyzer
 
 import (
+	"go/ast"
+
 	"golang.org/x/tools/go/analysis"
 	"golang.org/x/tools/go/analysis/passes/inspect"
 )
@@ -15,5 +17,13 @@ func New() *analysis.Analyzer {
 }
 
 func run(pass *analysis.Pass) (any, error) {
+
+	for _, file := range pass.Files {
+		for _, decl := range file.Decls {
+			// Exercise
+			_ = ast.Print(pass.Fset, decl)
+		}
+	}
+
 	return nil, nil
 }

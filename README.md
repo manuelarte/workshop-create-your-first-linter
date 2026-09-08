@@ -114,12 +114,29 @@ The workflow is the following:
 
 #### Exercise: Find the global constants
 
-Go through the AST
-TODO
+Inside the `run` function of the analyzer, we can use get the files
+and traverse the AST:
+
+```go
+for _, file := range pass.Files {
+    for _, decl := range file.Decls {
+	    // TODO
+	}
+}
+```
 
 #### Exercise: Report the cases
 
-TODO:
+Once we find something to report, we can diagnosis using `pass.Reportf`
+to report the issue.
+
+```go
+analysis.Diagnostic{
+    Pos:     node.Pos(),
+	End:     node.End(),
+	Message: msg,
+}
+```
 
 ### Verification
 
@@ -127,7 +144,29 @@ Verify all the tests pass and the error message is the expected one.
 
 #### Extra Exercise: Suggest a fix
 
-The analyzer tool also provides
+The analyzer tool also provides the possibility to
+apply a fix to the code. This is done by providing a `SuggestedFix` in the `Diagnostic` struct.
+
+```go
+analysis.Diagnostic{
+    Pos:     i.Pos(),
+	End:     i.End(),
+	Message: msg,
+	SuggestedFixes: []analysis.SuggestedFix{
+	    {
+		    Message: msg,
+			TextEdits: []analysis.TextEdit{
+			    {
+	                Pos: i.Pos(),
+					End: i.End(),
+					// Can someone see the problem of fixing it?
+					NewText: fmt.Appendf(nil, "_%s", i.Name),
+				},
+			},
+		},
+	},
+}
+````
 
 Question: Do you see any issue when suggesting a fix?
 
@@ -145,6 +184,11 @@ Inside `custompluginexample`:
 - Create `custom-gcl.yml` file with your linter configuration.
 - Add to `.golangci.yml` the custom linter settings with your new linter.
 - Create a custom golangci-lint binary and check that the linter is reporting an issuee.
+
+```bash
+golangci-lint custom -vv
+./custom-gcl run --fix ./...
+```
 
 [analysistest]: https://pkg.go.dev/golang.org/x/tools/go/analysis/analysistest
 [golang/x/tools]: https://pkg.go.dev/golang.org/x/tools
