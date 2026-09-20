@@ -4,6 +4,17 @@ Welcome to this workshop on how to create your first linter (a.k.a. analyzer).
 
 The package to use is [golang/x/tools][golang/x/tools].
 
+## Prerequisites
+
+- Basic knowledge of Go programming.
+- Git installed on your system.
+- Go compiler version 1.26 or newer.
+
+## Overview
+
+This workshop contains some explanation of how a linter works, how the AST is built and
+some small exercises before we actually build our first linter.
+
 ## Steps
 
 ## Check AST example
