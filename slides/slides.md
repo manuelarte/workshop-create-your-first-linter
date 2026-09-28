@@ -19,13 +19,13 @@ transition: slide-left
 # enable Comark Syntax: https://comark.dev/syntax/markdown
 comark: true
 # duration of the presentation
-duration: 60min
+duration: 90min
 hideInToc: true
 ---
 
 # Create Your First Linter
 
-Workshop (60min)
+Workshop (90min)
 
 <div class="abs-br m-6 text-xl">
   <a href="https://github.com/manuelarte/workshop-create-your-first-linter" target="_blank" class="slidev-icon-btn">
@@ -114,6 +114,7 @@ Tree that represents the structure of a program or code snippet
 
 ---
 level: 2
+transition: slide-up
 ---
 
 # AST Example
@@ -154,15 +155,29 @@ skinparam monochrome reverse
 </div>
 
 ---
-layout: statement
 level: 2
+transition: slide-up
+---
+
+# Tools Analyzer
+
+Package [golang.org/x/tools](https://pkg.go.dev/golang.org/x/tools)
+
+- Node: represents a node in the AST.
+- Analyzer: (a.k.a. linter) analyzes the AST and reports issues.
+- Pass: represents a single run of an Analyzer on a set of files.
+- Diagnostic: represents an issue found by an Analyzer.
+
+---
+level: 2
+layout: statement
+transition: slide-up
 ---
 
 # AST Exercise
 
 ---
 layout: section
-transition: slide-up
 ---
 
 # My First Linter
@@ -207,263 +222,130 @@ const errNotFound = "not found"
 
 ---
 level: 2
+transition: slide-up
 ---
 
-# Shiki Magic Move
+# Approach
 
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
+- Write test cases first. Using [analysistest](https://pkg.go.dev/golang.org/x/tools/go/analysis/analysistest).
+- Implement business logic.
 
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
+---
+level: 2
+---
 
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
+# Let's
+
+<img src="/gopher.png" alt="go">
+
+---
+level: 2
+layout: center
+transition: slide-up
+---
+
+# Comments
+
+- Stylistic linters are very useful in big projects or in big teams.
+- Be consistent.
+
+---
+layout: center
+---
+
+# Run Linter
+
+---
+level: 2
+transition: slide-up
+---
+
+# Standalone
+
+<br>
+
+```bash
+go install ..../unexportedconstantscheck
+cd myproject
+unexportedconstantscheck --fix ./...
 ```
 
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
+---
+level: 2
+layout: two-cols
+transition: slide-up
+---
+
+# golangci-lint Plugin
+
+<br>
+
+[Golangci-lint](https://golangci-lint.run/) is a fast linters runner for Go.
+
+* Widely used.
+* More than 100 linters.
+* Linters & Formatters.
+
+::right::
+
+```plantuml
+@startuml
+left to right direction
+skinparam backgroundColor transparent
+skinparam monochrome reverse
+skinparam actorStyle awesome
+
+:User:
+
+[App]
+
+rectangle .golangci.yml {
+  ["gci"]
+  ["gofmt"]
+  ["revive"]
+  ["funcorder"]
+}
+
+User --> App
+.golangci.yml -- App
+
+@enduml
+```
+
+<style>
+    ul {
+        font-size: 2em;
     }
-  }
-}
-```
+</style>
 
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
+---
+level: 2
+---
+
+# golangci-lint Plugin
+
+- Custom golangci-lint binary.
+- Custom linter added to that binary.
+
+<style>
+    ul {
+        font-size: 2em;
     }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
+</style>
 
 ---
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>`, `<BlueSky/>`, and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
+level: 2
 ---
 
-# Clicks Animations
+# Let's
 
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you press <kbd>space</kbd> or <kbd>right</kbd>, or click outside the slide on the right.
-
-```html
-<div v-click>This shows up when you trigger a click animation.</div>
-```
-
-</div>
-
-<p v-click>
-You can also add modifiers to change the animation:
-</p>
-
-<div class="grid gap-3 mt-4 text-sm" style="grid-template-columns: repeat(3, 1fr) 1.5fr 1fr">
-  <div v-after.up class="p-3 rounded border border-primary/20 bg-primary/10">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.up</div>
-    <div>Slide from bottom</div>
-  </div>
-  <div v-click.fade-in class="p-3 rounded border border-primary/30 bg-primary/15">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.fade-in</div>
-    <div>Fade in</div>
-  </div>
-  <div v-click.fade class="p-3 rounded border border-primary/40 bg-primary/20">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.fade</div>
-    <div>Dim (0.5 opacity)</div>
-  </div>
-  <div v-click.fade.right.scale class="p-3 rounded border border-primary/50 bg-primary/25">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.fade.right.scale</div>
-    <div>Composed</div>
-  </div>
-  <div v-click.none class="p-3 rounded border border-primary/60 bg-primary/30">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.none</div>
-    <div>No transition</div>
-  </div>
-</div>
-
-<v-click>
-
-The <span v-mark.red="7"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="8">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div v-click mt-12>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
-
-</div>
+<img src="/gopher.png" alt="go">
 
 ---
-
-# Motions
-
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn more](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
+hideInToc: true
+layout: image
+image: /q_a.png
+backgroundSize: 100%
 ---
-src: ./pages/imported-slides.md
-hide: false
----
+
+# Q/A
