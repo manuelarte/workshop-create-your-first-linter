@@ -40,8 +40,7 @@ func run(logger *slog.Logger) error {
 		slog.String("addr", s.Addr),
 	)
 
-	err := s.ListenAndServe()
-	if err != nil && !errors.Is(err, http.ErrServerClosed) {
+	if err := s.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 		return fmt.Errorf("server error: %w", err)
 	}
 
