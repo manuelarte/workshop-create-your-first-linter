@@ -164,7 +164,7 @@ transition: slide-up
 Package [golang.org/x/tools](https://pkg.go.dev/golang.org/x/tools)
 
 - Node: represents a node in the AST.
-- Analyzer: (a.k.a. linter) analyzes the AST and reports issues.
+- Analyzer: (a.k.a. linter) contains the business logic, analyzes the AST and reports issues.
 - Pass: represents a single run of an Analyzer on a set of files.
 - Diagnostic: represents an issue found by an Analyzer.
 
@@ -184,8 +184,8 @@ layout: section
 # My First Linter
 
 ---
-layout: two-cols-header
 level: 2
+layout: two-cols-header
 transition: slide-up
 ---
 
