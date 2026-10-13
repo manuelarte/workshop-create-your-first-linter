@@ -102,7 +102,7 @@ hideInToc: true
 
 # Table of contents
 
-<Toc text-sm minDepth="1" maxDepth="1" />
+<Toc text-sm minDepth="1" maxDepth="2" />
 
 ---
 layout: statement
@@ -115,6 +115,7 @@ Tree that represents the structure of a program or code snippet
 ---
 level: 2
 transition: slide-up
+hideInToc: true
 ---
 
 # AST Example
@@ -155,7 +156,6 @@ skinparam monochrome reverse
 </div>
 
 ---
-level: 2
 transition: slide-up
 ---
 
@@ -164,7 +164,7 @@ transition: slide-up
 Package [golang.org/x/tools](https://pkg.go.dev/golang.org/x/tools)
 
 - Node: represents a node in the AST.
-- Analyzer: (a.k.a. linter) analyzes the AST and reports issues.
+- Analyzer: (a.k.a. linter) contains the business logic, analyzes the AST and reports issues.
 - Pass: represents a single run of an Analyzer on a set of files.
 - Diagnostic: represents an issue found by an Analyzer.
 
@@ -172,6 +172,7 @@ Package [golang.org/x/tools](https://pkg.go.dev/golang.org/x/tools)
 level: 2
 layout: statement
 transition: slide-up
+hideInToc: true
 ---
 
 # AST Exercise
@@ -183,12 +184,12 @@ layout: section
 # My First Linter
 
 ---
-layout: two-cols-header
 level: 2
+layout: two-cols-header
 transition: slide-up
 ---
 
-# My First Linter
+# Definition
 
 ## [Prefix unexported globals with '`_`' ](https://github.com/uber-go/guide/blob/master/style.md#prefix-unexported-globals-with-_)
 
@@ -225,13 +226,14 @@ level: 2
 transition: slide-up
 ---
 
-# Approach
+# Implementation
 
 - Write test cases first. Using [analysistest](https://pkg.go.dev/golang.org/x/tools/go/analysis/analysistest).
 - Implement business logic.
 
 ---
 level: 2
+hideInToc: true
 ---
 
 # Let's
@@ -242,6 +244,7 @@ level: 2
 level: 2
 layout: center
 transition: slide-up
+hideInToc: true
 ---
 
 # Comments
@@ -274,6 +277,7 @@ unexportedconstantscheck --fix ./...
 level: 2
 layout: two-cols
 transition: slide-up
+hideInToc: true
 ---
 
 # golangci-lint Plugin
@@ -335,6 +339,7 @@ level: 2
 
 ---
 level: 2
+hideInToc: true
 ---
 
 # Let's
@@ -342,10 +347,10 @@ level: 2
 <img src="/gopher.png" alt="go">
 
 ---
-hideInToc: true
 layout: image
 image: /q_a.png
 backgroundSize: 100%
+hideInToc: true
 ---
 
 # Q/A
