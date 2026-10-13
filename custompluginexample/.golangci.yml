@@ -25,10 +25,12 @@ formatters:
 linters:
   default: all
   disable:
+    #keep-sorted start
     - decorder
     - dupl
     - errchkjson
     - exhaustruct
+    - exhaustruct_v5
     - forcetypeassert
     - ginkgolinter # Related to Ginkgo.
     - goheader
@@ -40,6 +42,7 @@ linters:
     - maintidx
     - mnd
     - nlreturn
+    - noinlineerr
     - paralleltest
     - prealloc
     - promlinter # Related to prometheus.
@@ -51,6 +54,7 @@ linters:
     - varnamelen
     - wsl
     - zerologlint
+    #keep-sorted end
 
   settings:
     custom:
