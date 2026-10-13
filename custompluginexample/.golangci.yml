@@ -25,6 +25,7 @@ formatters:
 linters:
   default: all
   disable:
+    #keep-sorted start
     - decorder
     - dupl
     - errchkjson
@@ -40,8 +41,8 @@ linters:
     - ireturn
     - maintidx
     - mnd
-    - noinlineerr
     - nlreturn
+    - noinlineerr
     - paralleltest
     - prealloc
     - promlinter # Related to prometheus.
@@ -53,6 +54,7 @@ linters:
     - varnamelen
     - wsl
     - zerologlint
+    #keep-sorted end
 
   settings:
     custom:
