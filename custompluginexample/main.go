@@ -16,8 +16,7 @@ const defaultAddress = ":8080"
 func main() {
 	logger := slog.Default()
 
-	err := run(logger)
-	if err != nil {
+	if err := run(logger); err != nil {
 		logger.Error("Application error", slog.Any("err", err))
 	}
 }
