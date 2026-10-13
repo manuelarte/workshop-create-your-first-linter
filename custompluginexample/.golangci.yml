@@ -29,6 +29,7 @@ linters:
     - dupl
     - errchkjson
     - exhaustruct
+    - exhaustruct_v5
     - forcetypeassert
     - ginkgolinter # Related to Ginkgo.
     - goheader
