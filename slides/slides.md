@@ -25,7 +25,11 @@ hideInToc: true
 
 # Create Your First Linter
 
-Workshop (90min)
+[github.com/manuelarte/workshop-create-your-first-linter](https://github.com/manuelarte/workshop-create-your-first-linter) (90min)
+
+<div class="flex justify-center mt-6 mb-2">
+  <img src="/repository.jpeg" alt="workshop-create-your-first-linter" width="200" class="rounded-lg shadow-md" />
+</div>
 
 <div class="abs-br m-6 text-xl">
   <a href="https://github.com/manuelarte/workshop-create-your-first-linter" target="_blank" class="slidev-icon-btn">
@@ -329,7 +333,7 @@ level: 2
 # golangci-lint Plugin
 
 - Custom golangci-lint binary.
-- Custom linter added to that binary.
+- Custom linter is added to that binary.
 
 <style>
     ul {
