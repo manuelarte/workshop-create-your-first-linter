@@ -182,6 +182,22 @@ hideInToc: true
 # AST Exercise
 
 ---
+level: 2
+transition: slide-up
+hideInToc: true
+---
+
+# AST Exercise
+
+- Clone/Fork the repository.
+- Run tests of [astexample](https://github.com/manuelarte/workshop-create-your-first-linter/tree/main/astexample).
+- Analyze the output of `ast.Print(pass.Fset, file)`.
+- Check the AST of different Go specs:
+  - Const.
+  - Var.
+  - etc.
+
+---
 layout: section
 ---
 
@@ -237,6 +253,16 @@ transition: slide-up
 
 ---
 level: 2
+transition: slide-up
+---
+
+# Define test cases
+
+- Write a file with the different cases to test.
+- Add inlined comments where needed with the expected output.
+
+---
+level: 2
 hideInToc: true
 ---
 
@@ -272,7 +298,7 @@ transition: slide-up
 <br>
 
 ```bash
-go install ..../unexportedconstantscheck
+go build -o unexportedconstantscheck
 cd myproject
 unexportedconstantscheck --fix ./...
 ```
@@ -335,6 +361,13 @@ level: 2
 - Custom golangci-lint binary.
 - Custom linter is added to that binary.
 
+<v-click>
+
+- Add plugin library and register the linter in `init()` function.
+- Run `make lint` and check that the linter is executed.
+
+</v-click>
+
 <style>
     ul {
         font-size: 2em;
@@ -349,6 +382,44 @@ hideInToc: true
 # Let's
 
 <img src="/gopher.png" alt="go">
+
+---
+level: 2
+transition: slide-up
+---
+
+# Suggest a fix
+
+<v-click>
+
+- Modify the source code to fix the issue.
+- Run the linter and check the issue is fixed, but...
+
+```go
+analysis.Diagnostic{
+    ...
+    SuggestedFixes: []analysis.SuggestedFix{
+        {
+            Message: msg,
+            TextEdits: []analysis.TextEdit{
+                {
+                    Pos: i.Pos(),
+                    End: i.End(),
+                    NewText: "", // TODO
+                },
+            },
+        },
+    },
+}
+```
+
+</v-click>
+
+<style>
+    ul {
+        font-size: 2em;
+    }
+</style>
 
 ---
 layout: image
