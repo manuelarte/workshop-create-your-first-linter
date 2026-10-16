@@ -254,6 +254,7 @@ transition: slide-up
 ---
 level: 2
 transition: slide-up
+hideInToc: true
 ---
 
 # Define test cases
@@ -310,7 +311,7 @@ transition: slide-up
 hideInToc: true
 ---
 
-# golangci-lint Plugin
+# Golangci-lint Plugin
 
 <br>
 
@@ -356,7 +357,7 @@ User --> App
 level: 2
 ---
 
-# golangci-lint Plugin
+# Golangci-lint Plugin
 
 - Custom golangci-lint binary.
 - Custom linter is added to that binary.
