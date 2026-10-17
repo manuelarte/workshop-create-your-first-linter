@@ -1,6 +1,6 @@
 # Workshop: Create Your First Linter
 
-Welcome to this workshop on how to create your first linter (a.k.a. analyzer).
+Welcome to this workshop on how to create your first linter (a.k.a. analyzer) in Go.
 
 The package to use is [golang/x/tools][golang/x/tools].
 
@@ -9,6 +9,9 @@ The package to use is [golang/x/tools][golang/x/tools].
 - Basic knowledge of Go programming.
 - Git installed on your system.
 - Go compiler version 1.26 or newer.
+
+As an alternative, you can use GitHub workspaces to run the workshop in a browser
+without installing anything on your system.
 
 ## Overview
 
@@ -19,17 +22,28 @@ some small exercises before we actually build our first linter.
 
 ## Check AST example
 
-In the folder [astexample](astexample) we can see a small application to
-print the Abstract Syntax Tree (AST) of a Go file.
+Every compiler/interpreter parses source code into an Abstract Syntax Tree (AST), and linters work on
+top of that tree. This is not a Go-only concept, so in the folder [astexample](astexample) we have
+several small projects, one per language, that print the AST of a small source file:
 
-We are going to first check the AST for [example.go](astexample/testdata/src/simple/example.go).
+| Language | Project | Command |
+| --- | --- | --- |
+| Go | [astexample/go](astexample/go) | `go test -v` |
+| Rust | [astexample/rust](astexample/rust) | `just ast` |
+| Python | [astexample/python](astexample/python) | `just ast` |
+
+Feel free to explore all of them to see how similar code is represented in each language. From now
+on, **we are going to focus on Go**, as that is the language we will use to build our linter.
+
+We are going to first check the AST for
+[example.go](astexample/go/testdata/src/simple/example.go).
 This "linter" only prints the AST tree with:
 
 ```go
 ast.Print(pass.Fset, file)
 ```
 
-If we run the tests with:
+If we run the tests inside [astexample/go](astexample/go) with:
 
 ```bash
 go test -v
@@ -39,7 +53,7 @@ We can see the AST tree.
 
 ### Exercise
 
-Modify the example file and see the AST representation of other [go specs][go-specs].
+Modify the Go example file and see the AST representation of other [go specs][go-specs].
 
 Put special emphasis on checking how AST represents:
 
