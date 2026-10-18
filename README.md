@@ -145,7 +145,7 @@ and traverse the AST:
 ```go
 for _, file := range pass.Files {
     for _, decl := range file.Decls {
-	    // TODO
+	    // TODO: implement business logic
 	}
 }
 ```
@@ -158,8 +158,8 @@ to report the issue.
 ```go
 analysis.Diagnostic{
     Pos:     node.Pos(),
-	End:     node.End(),
-	Message: msg,
+    End:     node.End(),
+    Message: msg,
 }
 ```
 
