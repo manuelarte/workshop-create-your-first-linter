@@ -51,7 +51,7 @@ hideInToc: true
 
 <div v-click class="bg-gray-100 dark:bg-gray-800 p-8 rounded-xl text-2xl shadow-lg mt-8">
   Automatically analyze source code for potential errors, 
-  <span v-mark.circle.red="2">stylistic issues</span>, and violations of coding conventions
+  stylistic issues, and <span v-mark.circle.red="2">violations of coding conventions</span>
 </div>
 
 <!--
@@ -118,11 +118,32 @@ Tree that represents the structure of a program or code snippet
 
 ---
 level: 2
+layout: two-cols-header
 transition: slide-up
 hideInToc: true
 ---
 
 # AST Example
+
+::left::
+
+```go
+package main
+
+import "fmt"
+
+type PersonalDetails struct {
+    name, surname string
+}
+
+func main() {
+    fmt.Println("Hello, World!")
+}
+```
+
+::right::
+
+<v-click>
 
 ```plantuml
 @startwbs
@@ -135,29 +156,31 @@ skinparam monochrome reverse
 *** ast.ImportSpec
 **** ast.BasicLit
 ** ast.GenDecl
-*** ast.ValueSpec
-**** ast.Ident
-**** ast.BasicLit
-** ast.GenDecl
 *** ast.TypeSpec
 *** ast.StructType
 **** ast.FieldList
 ***** ast.Field
 ***** ast.Field
 ** ast.FuncDecl
-*** ast.FuncType
-*** ast.FieldList
-**** ast.Field
-**** ast.Field
-** ...
+*** ast.BlockStmt
+**** ...
 @endwbs
 ```
+
+</v-click>
 
 <!-- Footer -->
 
 <div class="absolute left-30px bottom-30px">
-  <a target="_blank" href="https://github.com/manuelarte/workshop-create-your-first-linter/blob/main/astexample/testdata/src/simple/example.go">File to test</a>
+  <a target="_blank" href="https://github.com/manuelarte/workshop-create-your-first-linter/blob/main/astexample/go/testdata/src/simple/main.go">File to test</a>
 </div>
+
+<style>
+.two-cols-header {
+  grid-template-columns: 1fr 2fr;
+  column-gap: 20px;
+}
+</style>
 
 ---
 transition: slide-up
@@ -190,9 +213,9 @@ hideInToc: true
 # AST Exercise
 
 - Clone/Fork the repository.
-- Run tests of [astexample](https://github.com/manuelarte/workshop-create-your-first-linter/tree/main/astexample).
-- Analyze the output of `ast.Print(pass.Fset, file)`.
-- Check the AST of different Go specs:
+- Run program in [astexample](https://github.com/manuelarte/workshop-create-your-first-linter/tree/main/astexample) `go run .`.
+- Check the output of `ast.Print(pass.Fset, file)`.
+- Modify the code and check the output for:
   - Const.
   - Var.
   - etc.
@@ -262,14 +285,12 @@ hideInToc: true
 - Write a file with the different cases to test.
 - Add inlined comments where needed with the expected output.
 
----
-level: 2
-hideInToc: true
----
-
-# Let's
+<v-click>
+<br>
+<h1>Let's</h1>
 
 <img src="/gopher.png" alt="go">
+</v-click>
 
 ---
 level: 2
@@ -360,7 +381,7 @@ level: 2
 # Golangci-lint Plugin
 
 - Custom golangci-lint binary.
-- Custom linter is added to that binary.
+- [Custom linter is added to that binary](https://golangci-lint.run/docs/plugins/module-plugins/).
 
 <v-click>
 
@@ -423,10 +444,18 @@ analysis.Diagnostic{
 </style>
 
 ---
-layout: image
-image: /q_a.png
-backgroundSize: 100%
+layout: two-cols-header
 hideInToc: true
 ---
 
 # Q/A
+
+::left::
+
+Thanks!
+
+<img src="/q_a.png">
+
+::right::
+
+<img src="/feedback-code.png">
