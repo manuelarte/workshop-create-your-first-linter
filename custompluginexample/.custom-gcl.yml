@@ -1,4 +1,5 @@
-version: v2.14.0
+version: v2.15.0
 plugins:
   - module: "github.com/manuelarte/workshop-create-your-first-linter/unexportedconstantscheck"
+    import:  "github.com/manuelarte/workshop-create-your-first-linter/unexportedconstantscheck/plugin"
     path: "../unexportedconstantscheck"
