@@ -59,5 +59,22 @@ func unexportedConstantWithoutUnderscore(name *ast.Ident) analysis.Diagnostic {
 		Pos:     name.Pos(),
 		End:     name.End(),
 		Message: fmt.Sprintf(`unexported constant %q should start with "_"`, name.Name),
+		// Uncomment the following lines to provide a suggested fix for the diagnostic
+		// But, can you see any potential issues with this suggested fix?
+		// Think about how it might affect the codebase and whether it could introduce any problems.
+		/*
+			SuggestedFixes: []analysis.SuggestedFix{
+				{
+					Message: "",
+					TextEdits: []analysis.TextEdit{
+						{
+							Pos:     name.Pos(),
+							End:     name.End(),
+							NewText: fmt.Appendf(nil, "_%s", name.Name),
+						},
+					},
+				},
+			},
+		*/
 	}
 }

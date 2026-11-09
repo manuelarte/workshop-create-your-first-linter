@@ -7,3 +7,7 @@ const _nameSimple = "John"
 const errCodeSimple = 500
 
 const ExportedSimple = "baz"
+
+func myFunction() {
+	const localConst = "local"
+}
