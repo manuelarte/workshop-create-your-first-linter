@@ -1,11 +1,11 @@
 fn main() {
-    let john = User::new("John", "Doe");
+    let john = PersonalDetails::new("John", "Doe");
     println!("Hello, {:?}!", john);
 }
 
 #[derive(Debug)]
 #[allow(dead_code)]
-struct User {
+struct PersonalDetails {
     name: String,
     surname: String,
 }

@@ -6,7 +6,7 @@ The package to use is [golang/x/tools][golang/x/tools].
 
 ## Prerequisites
 
-- Basic knowledge of Go programming.
+- Basic knowledge of Go programming (not strictly necessary but helpful).
 - Git installed on your system.
 - Go compiler version 1.26 or newer.
 
@@ -36,12 +36,8 @@ Feel free to explore all of them to see how similar code is represented in each 
 on, **we are going to focus on Go**, as that is the language we will use to build our linter.
 
 We are going to first check the AST for
-[example.go](astexample/go/testdata/src/simple/example.go).
-This "linter" only prints the AST tree with:
-
-```go
-ast.Print(pass.Fset, file)
-```
+[main.go](astexample/go/testdata/src/simple/main.go).
+This "linter" only prints the AST tree.
 
 If we run the tests inside [astexample/go](astexample/go) with:
 
@@ -50,6 +46,12 @@ go test -v
 ```
 
 We can see the AST tree.
+
+Feel free to check the code, the function used to print the AST in a friendly way is:
+
+```go
+ast.Print(pass.Fset, file)
+```
 
 ### Exercise
 
@@ -145,6 +147,8 @@ and traverse the AST:
 ```go
 for _, file := range pass.Files {
     for _, decl := range file.Decls {
+		// file.Decls gives us the top-level declarations in the file, 
+		// The next steps are, check if it is a GenDecl and if it is a const declaration.
 	    // TODO: implement business logic
 	}
 }
@@ -152,15 +156,15 @@ for _, file := range pass.Files {
 
 #### Exercise: Report the cases
 
-Once we find something to report, we can diagnosis using `pass.Reportf`
-to report the issue.
+Once we find something to report, we can do it by creating a `analysis.Diagnostic` and `pass.Report`.
 
 ```go
-analysis.Diagnostic{
+myDiag := analysis.Diagnostic{
     Pos:     node.Pos(),
     End:     node.End(),
     Message: msg,
 }
+pass.Report(myDiag)
 ```
 
 ### Verification
@@ -195,7 +199,7 @@ analysis.Diagnostic{
 
 Question: Do you see any issue when suggesting a fix?
 
-## Integrate it in Golangci-lint
+## Integrate it in golangci-lint
 
 We are going to add it to golangci-lint as a module 
 [plugin][golangci-plugin].
@@ -208,7 +212,7 @@ Inside `custompluginexample`:
 
 - Create `custom-gcl.yml` file with your linter configuration.
 - Add to `.golangci.yml` the custom linter settings with your new linter.
-- Create a custom golangci-lint binary and check that the linter is reporting an issuee.
+- Create a custom golangci-lint binary and check that the linter is reporting an issue.
 
 ```bash
 golangci-lint custom -vv
