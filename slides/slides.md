@@ -135,28 +135,21 @@ skinparam monochrome reverse
 *** ast.ImportSpec
 **** ast.BasicLit
 ** ast.GenDecl
-*** ast.ValueSpec
-**** ast.Ident
-**** ast.BasicLit
-** ast.GenDecl
 *** ast.TypeSpec
 *** ast.StructType
 **** ast.FieldList
 ***** ast.Field
 ***** ast.Field
 ** ast.FuncDecl
-*** ast.FuncType
-*** ast.FieldList
-**** ast.Field
-**** ast.Field
-** ...
+*** ast.BlockStmt
+**** ...
 @endwbs
 ```
 
 <!-- Footer -->
 
 <div class="absolute left-30px bottom-30px">
-  <a target="_blank" href="https://github.com/manuelarte/workshop-create-your-first-linter/blob/main/astexample/testdata/src/simple/example.go">File to test</a>
+  <a target="_blank" href="https://github.com/manuelarte/workshop-create-your-first-linter/blob/main/astexample/go/testdata/src/simple/main.go">File to test</a>
 </div>
 
 ---
@@ -191,8 +184,7 @@ hideInToc: true
 
 - Clone/Fork the repository.
 - Run tests of [astexample](https://github.com/manuelarte/workshop-create-your-first-linter/tree/main/astexample).
-- Analyze the output of `ast.Print(pass.Fset, file)`.
-- Check the AST of different Go specs:
+- Check the output of `ast.Print(pass.Fset, file)`.
   - Const.
   - Var.
   - etc.
@@ -262,14 +254,12 @@ hideInToc: true
 - Write a file with the different cases to test.
 - Add inlined comments where needed with the expected output.
 
----
-level: 2
-hideInToc: true
----
-
-# Let's
+<v-click>
+<br>
+<h1>Let's</h1>
 
 <img src="/gopher.png" alt="go">
+</v-click>
 
 ---
 level: 2
