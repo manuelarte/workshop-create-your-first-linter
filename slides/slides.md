@@ -458,4 +458,4 @@ Thanks!
 
 ::right::
 
-<img src="/feedback-codd.png">
+<img src="/feedback-code.png">
