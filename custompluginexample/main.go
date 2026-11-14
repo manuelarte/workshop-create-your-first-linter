@@ -1,4 +1,3 @@
-// Package main with an example on how to use embeddedswagger
 package main
 
 import (
