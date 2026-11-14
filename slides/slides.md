@@ -118,11 +118,32 @@ Tree that represents the structure of a program or code snippet
 
 ---
 level: 2
+layout: two-cols-header
 transition: slide-up
 hideInToc: true
 ---
 
 # AST Example
+
+::left::
+
+```go
+package main
+
+import "fmt"
+
+type PersonalDetails struct {
+    name, surname string
+}
+
+func main() {
+    fmt.Println("Hello, World!")
+}
+```
+
+::right::
+
+<v-click>
 
 ```plantuml
 @startwbs
@@ -146,11 +167,20 @@ skinparam monochrome reverse
 @endwbs
 ```
 
+</v-click>
+
 <!-- Footer -->
 
 <div class="absolute left-30px bottom-30px">
   <a target="_blank" href="https://github.com/manuelarte/workshop-create-your-first-linter/blob/main/astexample/go/testdata/src/simple/main.go">File to test</a>
 </div>
+
+<style>
+.two-cols-header {
+  grid-template-columns: 1fr 2fr;
+  column-gap: 20px;
+}
+</style>
 
 ---
 transition: slide-up
@@ -183,8 +213,9 @@ hideInToc: true
 # AST Exercise
 
 - Clone/Fork the repository.
-- Run tests of [astexample](https://github.com/manuelarte/workshop-create-your-first-linter/tree/main/astexample).
+- Run tests of [astexample](https://github.com/manuelarte/workshop-create-your-first-linter/tree/main/astexample) `go test -v`.
 - Check the output of `ast.Print(pass.Fset, file)`.
+- Modify the code and check the output for:
   - Const.
   - Var.
   - etc.
@@ -350,7 +381,7 @@ level: 2
 # Golangci-lint Plugin
 
 - Custom golangci-lint binary.
-- Custom linter is added to that binary.
+- [Custom linter is added to that binary](https://golangci-lint.run/docs/plugins/module-plugins/).
 
 <v-click>
 
@@ -413,10 +444,18 @@ analysis.Diagnostic{
 </style>
 
 ---
-layout: image
-image: /q_a.png
-backgroundSize: 100%
+layout: two-cols-header
 hideInToc: true
 ---
 
 # Q/A
+
+::left::
+
+Thanks!
+
+<img src="/q_a.png">
+
+::right::
+
+<img src="/feedback-codd.png">
