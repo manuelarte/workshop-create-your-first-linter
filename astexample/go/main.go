@@ -1,29 +1,38 @@
 package main
 
 import (
+	"fmt"
 	"go/ast"
-
-	"golang.org/x/tools/go/analysis"
-	"golang.org/x/tools/go/analysis/passes/inspect"
-	"golang.org/x/tools/go/analysis/singlechecker"
+	"go/parser"
+	"go/token"
+	"log/slog"
+	"path/filepath"
 )
 
 func main() {
-	singlechecker.Main(NewAnalyzer())
-}
+	logger := slog.Default()
 
-func NewAnalyzer() *analysis.Analyzer {
-	return &analysis.Analyzer{
-		Name:     "astexample",
-		Doc:      "astexample to show the AST hierarchy",
-		Run:      run,
-		Requires: []*analysis.Analyzer{inspect.Analyzer},
+	if err := run(); err != nil {
+		logger.Error("Failed to run", "error", err)
 	}
 }
 
-func run(pass *analysis.Pass) (any, error) {
-	for _, file := range pass.Files {
-		_ = ast.Print(pass.Fset, file)
+func run() error {
+	path := filepath.Join("testdata", "main.go")
+	fset := token.NewFileSet()
+	file, err := parser.ParseFile(
+		fset,
+		path,
+		nil,
+		parser.ParseComments,
+	)
+	if err != nil {
+		return fmt.Errorf("failed to parse file: %w", err)
 	}
-	return nil, nil
+
+	if errPrinting := ast.Print(fset, file); errPrinting != nil {
+		return fmt.Errorf("failed to print AST: %w", errPrinting)
+	}
+
+	return nil
 }

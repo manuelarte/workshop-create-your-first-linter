@@ -213,7 +213,7 @@ hideInToc: true
 # AST Exercise
 
 - Clone/Fork the repository.
-- Run tests of [astexample](https://github.com/manuelarte/workshop-create-your-first-linter/tree/main/astexample) `go test -v`.
+- Run program in [astexample](https://github.com/manuelarte/workshop-create-your-first-linter/tree/main/astexample) `go run .`.
 - Check the output of `ast.Print(pass.Fset, file)`.
 - Modify the code and check the output for:
   - Const.
