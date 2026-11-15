@@ -28,7 +28,7 @@ several small projects, one per language, that print the AST of a small source f
 
 | Language | Project | Command |
 | --- | --- | --- |
-| Go | [astexample/go](astexample/go) | `go test -v` |
+| Go | [astexample/go](astexample/go) | `go run .` |
 | Rust | [astexample/rust](astexample/rust) | `just ast` |
 | Python | [astexample/python](astexample/python) | `just ast` |
 
@@ -36,13 +36,13 @@ Feel free to explore all of them to see how similar code is represented in each 
 on, **we are going to focus on Go**, as that is the language we will use to build our linter.
 
 We are going to first check the AST for
-[main.go](astexample/go/testdata/src/simple/main.go).
+[main.go](astexample/go/testdata/main.go).
 This "linter" only prints the AST tree.
 
-If we run the tests inside [astexample/go](astexample/go) with:
+If we run the program inside [astexample/go](astexample/go) with:
 
 ```bash
-go test -v
+go run .
 ```
 
 We can see the AST tree.
@@ -218,6 +218,10 @@ Inside `custompluginexample`:
 golangci-lint custom -vv
 ./custom-gcl run --fix ./...
 ```
+
+> [!WARNING]
+> If after changing the linter's code to fix the issue, you don't see the fix applied
+> try changing the golangci-lint version in `.custom-gcl.yml`, sometimes there are some cache issues.
 
 [analysistest]: https://pkg.go.dev/golang.org/x/tools/go/analysis/analysistest
 [golang/x/tools]: https://pkg.go.dev/golang.org/x/tools
