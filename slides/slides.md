@@ -51,7 +51,7 @@ hideInToc: true
 
 <div v-click class="bg-gray-100 dark:bg-gray-800 p-8 rounded-xl text-2xl shadow-lg mt-8">
   Automatically analyze source code for potential errors, 
-  <span v-mark.circle.red="2">stylistic issues</span>, and violations of coding conventions
+  stylistic issues, and <span v-mark.circle.red="2">violations of coding conventions</span>
 </div>
 
 <!--
