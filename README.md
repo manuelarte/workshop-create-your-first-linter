@@ -22,7 +22,7 @@ some small exercises before we actually build our first linter.
 
 ## Check AST example
 
-Every compiler/interpreter parses source code into an Abstract Syntax Tree (AST), and linters work on
+Every compiler/interpreter parses source code into an Abstract Syntax Tree (AST), and some linters work on
 top of that tree. This is not a Go-only concept, so in the folder [astexample](astexample) we have
 several small projects, one per language, that print the AST of a small source file:
 
